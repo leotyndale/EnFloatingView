@@ -1,3 +1,4 @@
+! [Logo] (https://github.com/leotyndale/EnFloatingView/blob/master/preview/logo.png)
 # EnFloatingView
 
 无需一切权限，不受各种国产ROM限制，默认可以显示的应用内悬浮窗。
@@ -32,6 +33,8 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 - 不能接受7.1.1以上机型，使用第二种方式实现悬浮窗仍需要用户主动授予权限的操作？
 - 不能接受在魅族、华为、小米等机型上默认隐藏，需要引导用户打开悬浮窗，就像这样
+
+! [权限管理] (https://github.com/leotyndale/EnFloatingView/blob/master/preview/1.gif)
 
 ### 功能
 
@@ -73,3 +76,4 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
    ```
 
 ### 效果图
+! [预览图] (https://github.com/leotyndale/EnFloatingView/blob/master/preview/2.gif)
