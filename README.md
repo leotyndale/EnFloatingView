@@ -28,7 +28,7 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 ​        7.1.1以下不需要权限声明，在魅族、华为、小米等机型上默认隐藏，需要引导用户打开悬浮窗。
 
-### 存在问题
+### 传统方案的问题
 
 第一种方案因为存在各种限制，不能被众多开发采纳，故而比较流行的悬浮窗实现方式是第二种。
 
