@@ -22,7 +22,7 @@ public class TestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         FloatingViewManager.getInstance().add(getApplicationContext());
-        FloatingViewManager.getInstance().remove();
+//        FloatingViewManager.getInstance().remove();
     }
 
     public void createActivity(View view) {
