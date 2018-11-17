@@ -26,7 +26,7 @@ need permission：
 
 2. TYPE_TOAST / TYPE_PHONE Type
 
-        No permission statement is required below 7.1.1. It is hidden by default on models like meizu, huawei and xiaomi, and users need to be guided to open the suspension window.
+No permission statement is required below 7.1.1. It is hidden by default on models like meizu, huawei and xiaomi, and users need to be guided to open the suspension window.
 
 ### Traditional solutions
 
