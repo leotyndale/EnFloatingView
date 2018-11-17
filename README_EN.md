@@ -10,7 +10,7 @@ Do not need all permissions, not subject to a variety of domestic ROM restrictio
 
 For the implementation of traditional suspension Windows and some ancient "black technology" suspension Windows, there must have been many mature cases, and the implementation strategies are basically the following two：
 
-1. TYPE_SYSTEM_ALERT type
+1. TYPE_SYSTEM_ALERT Type
 
 ```java
 mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
@@ -18,13 +18,13 @@ WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams()
 layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 ```
 
-        need permission：
+need permission：
 
 ```java
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" ></uses>
 ```
 
-2. TYPE_TOAST / TYPE_PHONE type
+2. TYPE_TOAST / TYPE_PHONE Type
 
         No permission statement is required below 7.1.1. It is hidden by default on models like meizu, huawei and xiaomi, and users need to be guided to open the suspension window.
 
