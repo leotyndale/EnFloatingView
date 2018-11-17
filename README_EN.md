@@ -6,11 +6,11 @@ EnFloatingView
 
 Do not need all permissions, not subject to a variety of domestic ROM restrictions, the default can be displayed within the application suspension window.
 
-### 传统方案
+### Traditional way
 
 For the implementation of traditional suspension Windows and some ancient "black technology" suspension Windows, there must have been many mature cases, and the implementation strategies are basically the following two：
 
-1. TYPE_SYSTEM_ALERT类型
+1. TYPE_SYSTEM_ALERT type
 
 ```java
 mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
@@ -67,13 +67,13 @@ But we have our own rules:
    ```
 
 
-2. display
+2. Display
 
    ```java
        FloatingViewManager.getInstance().add(getApplicationContext());
    ```
 
-3. dismiss
+3. Dismiss
 
    ```java
        FloatingViewManager.getInstance().remove();
