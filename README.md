@@ -4,6 +4,8 @@ EnFloatingView
 ==========================
 [![Muxuan](https://img.shields.io/badge/Powered_by-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
 
+[English](/README_EN.md)
+
 无需一切权限，不受各种国产ROM限制，默认可以显示的应用内悬浮窗。
 
 ### 传统方案
