@@ -4,34 +4,38 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.DrawableRes;
 import android.support.v4.view.ViewCompat;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.imuxuan.floatingview.utils.EnContext;
+
 
 /**
- * @ClassName FloatingViewManager
+ * @ClassName FloatingView
  * @Description 悬浮窗管理器
  * @Author Yunpeng Li
  * @Creation 2018/3/15 下午5:05
  * @Mender Yunpeng Li
  * @Modification 2018/3/15 下午5:05
  */
-public class FloatingViewManager implements IFloatingViewManager {
+public class FloatingView implements IFloatingView {
 
     private EnFloatingView mEnFloatingView;
-    private static volatile FloatingViewManager mInstance;
+    private static volatile FloatingView mInstance;
     private FrameLayout mContainer;
 
-    private FloatingViewManager() {
+    private FloatingView() {
     }
 
-    public static FloatingViewManager getInstance() {
+    public static FloatingView get() {
         if (mInstance == null) {
-            synchronized (FloatingViewManager.class) {
+            synchronized (FloatingView.class) {
                 if (mInstance == null) {
-                    mInstance = new FloatingViewManager();
+                    mInstance = new FloatingView();
                 }
             }
         }
@@ -39,7 +43,7 @@ public class FloatingViewManager implements IFloatingViewManager {
     }
 
     @Override
-    public void remove() {
+    public FloatingView remove() {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
@@ -52,6 +56,7 @@ public class FloatingViewManager implements IFloatingViewManager {
                 mEnFloatingView = null;
             }
         });
+        return this;
     }
 
     private void ensureMiniPlayer(Context context) {
@@ -66,48 +71,68 @@ public class FloatingViewManager implements IFloatingViewManager {
     }
 
     @Override
-    public void add(Context context) {
-        ensureMiniPlayer(context);
+    public FloatingView add() {
+        ensureMiniPlayer(EnContext.get());
+        return this;
     }
 
     @Override
-    public void attach(Activity activity) {
+    public FloatingView attach(Activity activity) {
         attach(getActivityRoot(activity));
+        return this;
     }
 
     @Override
-    public void attach(FrameLayout container) {
+    public FloatingView attach(FrameLayout container) {
         if (container == null || mEnFloatingView == null) {
             mContainer = container;
-            return;
+            return this;
         }
         if (mEnFloatingView.getParent() == container) {
-            return;
+            return this;
         }
         if (mContainer != null && mEnFloatingView.getParent() == mContainer) {
             mContainer.removeView(mEnFloatingView);
         }
         mContainer = container;
         container.addView(mEnFloatingView);
+        return this;
     }
 
     @Override
-    public void detach(Activity activity) {
+    public FloatingView detach(Activity activity) {
         detach(getActivityRoot(activity));
+        return this;
     }
 
     @Override
-    public void detach(FrameLayout container) {
+    public FloatingView detach(FrameLayout container) {
         if (mEnFloatingView != null && container != null && ViewCompat.isAttachedToWindow(mEnFloatingView)) {
             container.removeView(mEnFloatingView);
         }
         if (mContainer == container) {
             mContainer = null;
         }
+        return this;
     }
 
-    public EnFloatingView getFloatingView() {
+    @Override
+    public EnFloatingView getView() {
         return mEnFloatingView;
+    }
+
+    public FloatingView icon(@DrawableRes int resId) {
+        if (mEnFloatingView != null) {
+            mEnFloatingView.setIconImage(resId);
+        }
+        return this;
+    }
+
+    public FloatingView layoutParams(ViewGroup.LayoutParams params) {
+        if (mEnFloatingView != null) {
+            mEnFloatingView.setLayoutParams(params);
+        }
+        return this;
     }
 
     private void addViewToWindow(final EnFloatingView view) {

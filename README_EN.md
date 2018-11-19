@@ -56,13 +56,13 @@ But we have our own rules:
        @Override
        protected void onStart() {
            super.onStart();
-           FloatingViewManager.getInstance().attach(this);
+           FloatingView.get().attach(this);
        }
    
        @Override
        protected void onStop() {
            super.onStop();
-           FloatingViewManager.getInstance().detach(this);
+           FloatingView.get().detach(this);
        }
    ```
 
@@ -70,13 +70,13 @@ But we have our own rules:
 2. Display
 
    ```java
-       FloatingViewManager.getInstance().add(getApplicationContext());
+       FloatingView.get().add(getApplicationContext());
    ```
 
 3. Dismiss
 
    ```java
-       FloatingViewManager.getInstance().remove();
+       FloatingView.get().remove();
    ```
 
 ### Rendering

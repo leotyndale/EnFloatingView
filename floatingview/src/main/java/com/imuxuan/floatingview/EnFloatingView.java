@@ -1,8 +1,10 @@
 package com.imuxuan.floatingview;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
+import android.widget.ImageView;
 
 /**
  * @ClassName EnFloatingView
@@ -16,10 +18,16 @@ public class EnFloatingView extends FloatingMagnetView {
 
     private long mLastTouchDownTime;
     private static final int TOUCH_TIME_THRESHOLD = 150;
+    private final ImageView mIcon;
 
     public EnFloatingView(@NonNull Context context) {
         super(context, null);
         inflate(context, R.layout.en_floating_view, this);
+        mIcon = findViewById(R.id.icon);
+    }
+
+    public void setIconImage(@DrawableRes int resId){
+        mIcon.setImageResource(resId);
     }
 
     @Override

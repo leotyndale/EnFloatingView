@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.imuxuan.floatingview.FloatingViewManager;
+import com.imuxuan.floatingview.FloatingView;
 
 /**
  * @ClassName TestActivity
@@ -21,8 +21,8 @@ public class TestActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        FloatingViewManager.getInstance().add(getApplicationContext());
-//        FloatingViewManager.getInstance().remove();
+        FloatingView.get().add();
+//        FloatingView.getInstance().remove();
     }
 
     public void createActivity(View view) {

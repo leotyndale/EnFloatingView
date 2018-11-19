@@ -59,13 +59,13 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
        @Override
        protected void onStart() {
            super.onStart();
-           FloatingViewManager.getInstance().attach(this);
+           FloatingView.get().attach(this);
        }
 
        @Override
        protected void onStop() {
            super.onStop();
-           FloatingViewManager.getInstance().detach(this);
+           FloatingView.get().detach(this);
        }
    ```
 
@@ -73,13 +73,13 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 2. 展示悬浮窗
 
    ```java
-       FloatingViewManager.getInstance().add(getApplicationContext());
+       FloatingView.get().add();
    ```
 
 3. 销毁悬浮窗
 
    ```java
-       FloatingViewManager.getInstance().remove();
+       FloatingView.get().remove();
    ```
 
 ### 效果图
