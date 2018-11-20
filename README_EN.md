@@ -2,7 +2,10 @@
 
 EnFloatingView
 ==========================
-[![Muxuan](https://img.shields.io/badge/Powered_by-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
+[![Jcenter](https://img.shields.io/badge/Jcenter-v1.0-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
+[![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
+[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
+
 
 Do not need all permissions, not subject to a variety of domestic ROM restrictions, the default can be displayed within the application suspension window.
 
