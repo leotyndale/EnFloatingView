@@ -76,13 +76,13 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
    ```
 
 
-3. 展示悬浮窗
+3.展示悬浮窗
 
    ```java
        FloatingView.get().add();
    ```
 
-4. 销毁悬浮窗
+4.销毁悬浮窗
 
    ```java
        FloatingView.get().remove();
