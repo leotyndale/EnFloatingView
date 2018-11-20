@@ -50,7 +50,14 @@ But we have our own rules:
 
 ### Instructions
 
-1. Add the following code to onStart and onStop in the base class Activity (note that this must be the base class Activity)
+1.gralde dependencies
+
+   ```java
+       compile 'com.imuxuan:floatingview:1.0'
+   ```
+   
+
+2.Add the following code to onStart and onStop in the base class Activity (note that this must be the base class Activity)
 
    ```java
        @Override
@@ -67,13 +74,13 @@ But we have our own rules:
    ```
 
 
-2. Display
+3.Display
 
    ```java
        FloatingView.get().add(getApplicationContext());
    ```
 
-3. Dismiss
+4.Dismiss
 
    ```java
        FloatingView.get().remove();
