@@ -3,7 +3,7 @@
 EnFloatingView
 ==========================
 [![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
-[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](blog.imuxuan.com)
+[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
 
  
 [English](/README_EN.md)
