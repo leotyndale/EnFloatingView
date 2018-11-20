@@ -53,7 +53,13 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 ### 使用规则
 
-1. 在基类Activity（注意必须是基类Activity）中的onStart和onStop添加如下代码
+1.在gralde的dependencies中加入
+   ```java
+       compile 'com.imuxuan:floatingview:1.0'
+   ```
+   
+   
+2.在基类Activity（注意必须是基类Activity）中的onStart和onStop添加如下代码
 
    ```java
        @Override
@@ -70,13 +76,13 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
    ```
 
 
-2. 展示悬浮窗
+3. 展示悬浮窗
 
    ```java
        FloatingView.get().add();
    ```
 
-3. 销毁悬浮窗
+4. 销毁悬浮窗
 
    ```java
        FloatingView.get().remove();
