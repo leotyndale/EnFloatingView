@@ -2,7 +2,10 @@
 
 EnFloatingView
 ==========================
-[![Muxuan](https://img.shields.io/badge/Powered_by-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
+[![Jcenter](https://img.shields.io/badge/Jcenter-v1.0-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
+[![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
+[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
+
 
 Do not need all permissions, not subject to a variety of domestic ROM restrictions, the default can be displayed within the application suspension window.
 
@@ -50,7 +53,14 @@ But we have our own rules:
 
 ### Instructions
 
-1. Add the following code to onStart and onStop in the base class Activity (note that this must be the base class Activity)
+1.gralde dependencies
+
+   ```java
+       compile 'com.imuxuan:floatingview:1.0'
+   ```
+   
+
+2.Add the following code to onStart and onStop in the base class Activity (note that this must be the base class Activity)
 
    ```java
        @Override
@@ -67,13 +77,13 @@ But we have our own rules:
    ```
 
 
-2. Display
+3.Display
 
    ```java
        FloatingView.get().add(getApplicationContext());
    ```
 
-3. Dismiss
+4.Dismiss
 
    ```java
        FloatingView.get().remove();
