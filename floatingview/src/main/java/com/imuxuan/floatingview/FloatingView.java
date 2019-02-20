@@ -135,6 +135,13 @@ public class FloatingView implements IFloatingView {
         return this;
     }
 
+    public FloatingView listener(MagnetViewListener magnetViewListener) {
+        if (mEnFloatingView != null) {
+            mEnFloatingView.setMagnetViewListener(magnetViewListener);
+        }
+        return this;
+    }
+
     private void addViewToWindow(final EnFloatingView view) {
         if (mContainer == null) {
             return;

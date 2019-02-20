@@ -29,4 +29,6 @@ public interface IFloatingView {
 
     FloatingView layoutParams(ViewGroup.LayoutParams params);
 
+    FloatingView listener(MagnetViewListener magnetViewListener);
+
 }
