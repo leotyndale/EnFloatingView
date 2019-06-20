@@ -57,7 +57,7 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 1.在gralde的dependencies中加入
    ```java
-       compile 'com.imuxuan:floatingview:1.1'
+       compile 'com.imuxuan:floatingview:1.2'
    ```
    
    
