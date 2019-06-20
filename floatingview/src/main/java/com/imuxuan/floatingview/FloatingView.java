@@ -121,6 +121,7 @@ public class FloatingView implements IFloatingView {
         return mEnFloatingView;
     }
 
+    @Override
     public FloatingView icon(@DrawableRes int resId) {
         if (mEnFloatingView != null) {
             mEnFloatingView.setIconImage(resId);
@@ -128,6 +129,7 @@ public class FloatingView implements IFloatingView {
         return this;
     }
 
+    @Override
     public FloatingView layoutParams(ViewGroup.LayoutParams params) {
         if (mEnFloatingView != null) {
             mEnFloatingView.setLayoutParams(params);
@@ -135,6 +137,7 @@ public class FloatingView implements IFloatingView {
         return this;
     }
 
+    @Override
     public FloatingView listener(MagnetViewListener magnetViewListener) {
         if (mEnFloatingView != null) {
             mEnFloatingView.setMagnetViewListener(magnetViewListener);

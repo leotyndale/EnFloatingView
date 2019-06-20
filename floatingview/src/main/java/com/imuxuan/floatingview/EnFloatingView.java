@@ -3,7 +3,6 @@ package com.imuxuan.floatingview;
 import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
 import android.widget.ImageView;
 
 /**
@@ -16,8 +15,6 @@ import android.widget.ImageView;
  */
 public class EnFloatingView extends FloatingMagnetView {
 
-    private long mLastTouchDownTime;
-    private static final int TOUCH_TIME_THRESHOLD = 150;
     private final ImageView mIcon;
 
     public EnFloatingView(@NonNull Context context) {
@@ -28,28 +25,6 @@ public class EnFloatingView extends FloatingMagnetView {
 
     public void setIconImage(@DrawableRes int resId){
         mIcon.setImageResource(resId);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        super.onTouchEvent(event);
-        if (event != null) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    mLastTouchDownTime = System.currentTimeMillis();
-                    break;
-                case MotionEvent.ACTION_UP:
-                    if (isOnClickEvent()) {
-                        dealClickEvent();
-                    }
-                    break;
-            }
-        }
-        return true;
-    }
-
-    protected boolean isOnClickEvent() {
-        return System.currentTimeMillis() - mLastTouchDownTime < TOUCH_TIME_THRESHOLD;
     }
 
 }
