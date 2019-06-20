@@ -57,7 +57,7 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 1.在gralde的dependencies中加入
    ```java
-       compile 'com.imuxuan:floatingview:1.0'
+       compile 'com.imuxuan:floatingview:1.1'
    ```
    
    
@@ -88,6 +88,22 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
    ```java
        FloatingView.get().remove();
+   ```
+   
+5.添加点击事件
+
+   ```java
+       FloatingView.get().listener(new MagnetViewListener() {
+            @Override
+            public void onRemove(FloatingMagnetView magnetView) {
+                Toast.makeText(TestActivity.this, "我没了", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onClick(FloatingMagnetView magnetView) {
+                Toast.makeText(TestActivity.this, "点到我了", Toast.LENGTH_SHORT).show();
+            }
+        });
    ```
 
 ### 效果图
