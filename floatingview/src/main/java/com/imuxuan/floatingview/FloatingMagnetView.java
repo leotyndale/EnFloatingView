@@ -77,7 +77,7 @@ public class FloatingMagnetView extends FrameLayout {
                 }
                 break;
         }
-        return false;
+        return true;
     }
 
     protected void dealClickEvent() {
