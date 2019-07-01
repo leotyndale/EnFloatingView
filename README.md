@@ -61,7 +61,7 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
    ```
    
    
-2.在基类Activity（注意必须是基类Activity）中的onStart和onStop添加如下代码
+2.在基类Activity（注意必须是基类Activity）中的onStart和onStop（或者安卓原生ActivityLifeCycle监听）中添加如下代码
 
    ```java
        @Override
