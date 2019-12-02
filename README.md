@@ -6,12 +6,10 @@ EnFloatingView
 [![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
 [![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
 
- 
-[English](/README_EN.md)
-
 ![《移动开发架构设计实战》](https://upload-images.jianshu.io/upload_images/14802001-4864444c478c88ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ==========================
  
+[English](/README_EN.md)
 
 无需一切权限，不受各种国产ROM限制，默认可以显示的应用内悬浮窗。
 
