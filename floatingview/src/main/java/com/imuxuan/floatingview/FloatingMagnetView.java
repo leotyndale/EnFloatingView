@@ -1,6 +1,7 @@
 package com.imuxuan.floatingview;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
@@ -31,6 +32,7 @@ public class FloatingMagnetView extends FrameLayout {
     protected int mScreenWidth;
     private int mScreenHeight;
     private int mStatusBarHeight;
+    private boolean isNearestLeft = true;
 
     public void setMagnetViewListener(MagnetViewListener magnetViewListener) {
         this.mMagnetViewListener = magnetViewListener;
@@ -117,13 +119,18 @@ public class FloatingMagnetView extends FrameLayout {
     }
 
     public void moveToEdge() {
-        float moveDistance = isNearestLeft() ? MARGIN_EDGE : mScreenWidth - MARGIN_EDGE;
+        moveToEdge(isNearestLeft());
+    }
+
+    public void moveToEdge(boolean isLeft) {
+        float moveDistance = isLeft ? MARGIN_EDGE : mScreenWidth - MARGIN_EDGE;
         mMoveAnimator.start(moveDistance, getY());
     }
 
     protected boolean isNearestLeft() {
         int middle = mScreenWidth / 2;
-        return getX() < middle;
+        isNearestLeft = getX() < middle;
+        return isNearestLeft;
     }
 
     public void onRemove() {
@@ -170,4 +177,10 @@ public class FloatingMagnetView extends FrameLayout {
         setY(getY() + deltaY);
     }
 
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        updateSize();
+        moveToEdge(isNearestLeft);
+    }
 }
