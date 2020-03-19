@@ -7,7 +7,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:onClick="createActivity"
-        android:text="New" />
+        android:text="NewActivity" />
+
+    <TextView
+        android:id="@+id/page_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="页面1"
+        android:textSize="50dp" />
 
 </RelativeLayout>
