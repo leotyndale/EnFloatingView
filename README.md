@@ -114,3 +114,12 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 ### 效果图
 ![预览图](https://github.com/leotyndale/EnFloatingView/blob/master/preview/2.gif)
+
+### 更新记录
+
+1.3
+增加自定义layout等API
+1.4
+适配折叠屏
+1.5
+修复内存泄露问题
