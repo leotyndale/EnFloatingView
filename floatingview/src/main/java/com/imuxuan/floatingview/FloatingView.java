@@ -32,6 +32,7 @@ public class FloatingView implements IFloatingView {
     private int mLayoutId = R.layout.en_floating_view;
     @DrawableRes
     private int mIconRes = R.drawable.imuxuan;
+    private ViewGroup.LayoutParams mLayoutParams = getParams();
 
     private FloatingView() {
     }
@@ -71,7 +72,7 @@ public class FloatingView implements IFloatingView {
             }
             EnFloatingView enFloatingView = new EnFloatingView(EnContext.get(), mLayoutId);
             mEnFloatingView = enFloatingView;
-            enFloatingView.setLayoutParams(getParams());
+            enFloatingView.setLayoutParams(mLayoutParams);
             enFloatingView.setIconImage(mIconRes);
             addViewToWindow(enFloatingView);
         }
@@ -148,6 +149,7 @@ public class FloatingView implements IFloatingView {
 
     @Override
     public FloatingView layoutParams(ViewGroup.LayoutParams params) {
+        mLayoutParams = params;
         if (mEnFloatingView != null) {
             mEnFloatingView.setLayoutParams(params);
         }
@@ -174,7 +176,7 @@ public class FloatingView implements IFloatingView {
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.BOTTOM | Gravity.START;
-        params.setMargins(13, params.topMargin, params.rightMargin, 56);
+        params.setMargins(13, params.topMargin, params.rightMargin, 500);
         return params;
     }
 

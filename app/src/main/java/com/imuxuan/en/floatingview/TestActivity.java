@@ -1,6 +1,7 @@
 package com.imuxuan.en.floatingview;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -34,6 +35,8 @@ public class TestActivity extends BaseActivity {
             @Override
             public void onClick(FloatingMagnetView magnetView) {
                 Toast.makeText(TestActivity.this, "点到我了", Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse("http://blog.imuxuan.com");
+                startActivity(new Intent(Intent.ACTION_VIEW,uri));
             }
         });
     }
