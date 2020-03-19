@@ -2,7 +2,7 @@
 
 EnFloatingView
 ==========================
-[![Jcenter](https://img.shields.io/badge/Jcenter-v1.4-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
+[![Jcenter](https://img.shields.io/badge/Jcenter-v1.5-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
 [![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
 [![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
 
@@ -57,11 +57,11 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 - 超出屏幕限制移动
 - 可自动吸附到屏幕边缘
 
-### 使用规则
+### 基本使用规则
 
 1.在gralde的dependencies中加入
    ```java
-       compile 'com.imuxuan:floatingview:1.4'
+       compile 'com.imuxuan:floatingview:1.5'
    ```
    
    
@@ -88,13 +88,15 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
        FloatingView.get().add();
    ```
 
-4.销毁悬浮窗
+### 扩展用法
+
+1.销毁悬浮窗
 
    ```java
        FloatingView.get().remove();
    ```
    
-5.添加点击事件
+2.添加点击事件
 
    ```java
        FloatingView.get().listener(new MagnetViewListener() {
