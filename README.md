@@ -111,6 +111,32 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
             }
         });
    ```
+   
+   3.获得悬浮窗View
+
+   ```java
+       FloatingView.get().getView();
+   ```
+
+4.设置悬浮窗icon
+
+   ```java
+       FloatingView.get().icon(R.drawable.XXXXX);
+   ```
+
+5.设置悬浮窗View
+
+   ```java
+       FloatingView.get().customView(new View());
+       or
+       FloatingView.get().customView(R.layout.XXXXX);
+   ```
+
+6.设置悬浮窗位置等布局参数
+
+   ```java
+       FloatingView.get().layoutParams(new ViewGroup.LayoutParams());
+   ```
 
 ### 效果图
 ![预览图](https://github.com/leotyndale/EnFloatingView/blob/master/preview/2.gif)
@@ -118,8 +144,13 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 ### 更新记录
 
 1.3
+
 增加自定义layout等API
+
 1.4
+
 适配折叠屏
+
 1.5
+
 修复内存泄露问题
