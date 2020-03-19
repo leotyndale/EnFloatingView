@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 
 import com.imuxuan.floatingview.utils.EnContext;
 
+import java.lang.ref.WeakReference;
+
 
 /**
  * @ClassName FloatingView
@@ -27,7 +29,7 @@ public class FloatingView implements IFloatingView {
 
     private FloatingMagnetView mEnFloatingView;
     private static volatile FloatingView mInstance;
-    private FrameLayout mContainer;
+    private WeakReference<FrameLayout> mContainer;
     @LayoutRes
     private int mLayoutId = R.layout.en_floating_view;
     @DrawableRes
@@ -56,8 +58,8 @@ public class FloatingView implements IFloatingView {
                 if (mEnFloatingView == null) {
                     return;
                 }
-                if (ViewCompat.isAttachedToWindow(mEnFloatingView) && mContainer != null) {
-                    mContainer.removeView(mEnFloatingView);
+                if (ViewCompat.isAttachedToWindow(mEnFloatingView) && getContainer() != null) {
+                    getContainer().removeView(mEnFloatingView);
                 }
                 mEnFloatingView = null;
             }
@@ -93,16 +95,16 @@ public class FloatingView implements IFloatingView {
     @Override
     public FloatingView attach(FrameLayout container) {
         if (container == null || mEnFloatingView == null) {
-            mContainer = container;
+            mContainer = new WeakReference<>(container);
             return this;
         }
         if (mEnFloatingView.getParent() == container) {
             return this;
         }
-        if (mContainer != null && mEnFloatingView.getParent() == mContainer) {
-            mContainer.removeView(mEnFloatingView);
+        if (getContainer() != null && mEnFloatingView.getParent() == getContainer()) {
+            getContainer().removeView(mEnFloatingView);
         }
-        mContainer = container;
+        mContainer = new WeakReference<>(container);
         container.addView(mEnFloatingView);
         return this;
     }
@@ -118,7 +120,7 @@ public class FloatingView implements IFloatingView {
         if (mEnFloatingView != null && container != null && ViewCompat.isAttachedToWindow(mEnFloatingView)) {
             container.removeView(mEnFloatingView);
         }
-        if (mContainer == container) {
+        if (getContainer() == container) {
             mContainer = null;
         }
         return this;
@@ -165,10 +167,17 @@ public class FloatingView implements IFloatingView {
     }
 
     private void addViewToWindow(final View view) {
-        if (mContainer == null) {
+        if (getContainer() == null) {
             return;
         }
-        mContainer.addView(view);
+        getContainer().addView(view);
+    }
+
+    private FrameLayout getContainer() {
+        if (mContainer == null) {
+            return null;
+        }
+        return mContainer.get();
     }
 
     private FrameLayout.LayoutParams getParams() {
