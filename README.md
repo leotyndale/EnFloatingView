@@ -6,9 +6,13 @@ EnFloatingView
 [![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
 [![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
 
+![《移动开发架构设计实战》](https://upload-images.jianshu.io/upload_images/14802001-4864444c478c88ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+[点击购买](https://item.jd.com/12730926.html)
+
+==========================
  
 [English](/README_EN.md)
- 
 
 无需一切权限，不受各种国产ROM限制，默认可以显示的应用内悬浮窗。
 
@@ -57,11 +61,11 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 1.在gralde的dependencies中加入
    ```java
-       compile 'com.imuxuan:floatingview:1.1'
+       compile 'com.imuxuan:floatingview:1.2'
    ```
    
    
-2.在基类Activity（注意必须是基类Activity）中的onStart和onStop添加如下代码
+2.在基类Activity（注意必须是基类Activity）中的onStart和onStop（或者安卓原生ActivityLifeCycle监听）中添加如下代码
 
    ```java
        @Override
