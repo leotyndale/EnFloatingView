@@ -1,12 +1,13 @@
 package com.imuxuan.floatingview;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
 import android.support.v4.view.ViewCompat;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -24,9 +25,13 @@ import com.imuxuan.floatingview.utils.EnContext;
  */
 public class FloatingView implements IFloatingView {
 
-    private EnFloatingView mEnFloatingView;
+    private FloatingMagnetView mEnFloatingView;
     private static volatile FloatingView mInstance;
     private FrameLayout mContainer;
+    @LayoutRes
+    private int mLayoutId = R.layout.en_floating_view;
+    @DrawableRes
+    private int mIconRes = R.drawable.imuxuan;
 
     private FloatingView() {
     }
@@ -59,20 +64,22 @@ public class FloatingView implements IFloatingView {
         return this;
     }
 
-    private void ensureMiniPlayer(Context context) {
+    private void ensureFloatingView() {
         synchronized (this) {
             if (mEnFloatingView != null) {
                 return;
             }
-            mEnFloatingView = new EnFloatingView(context.getApplicationContext());
-            mEnFloatingView.setLayoutParams(getParams());
-            addViewToWindow(mEnFloatingView);
+            EnFloatingView enFloatingView = new EnFloatingView(EnContext.get(), mLayoutId);
+            mEnFloatingView = enFloatingView;
+            enFloatingView.setLayoutParams(getParams());
+            enFloatingView.setIconImage(mIconRes);
+            addViewToWindow(enFloatingView);
         }
     }
 
     @Override
     public FloatingView add() {
-        ensureMiniPlayer(EnContext.get());
+        ensureFloatingView();
         return this;
     }
 
@@ -117,15 +124,25 @@ public class FloatingView implements IFloatingView {
     }
 
     @Override
-    public EnFloatingView getView() {
+    public FloatingMagnetView getView() {
         return mEnFloatingView;
     }
 
     @Override
     public FloatingView icon(@DrawableRes int resId) {
-        if (mEnFloatingView != null) {
-            mEnFloatingView.setIconImage(resId);
-        }
+        mIconRes = resId;
+        return this;
+    }
+
+    @Override
+    public FloatingView customView(FloatingMagnetView viewGroup) {
+        mEnFloatingView = viewGroup;
+        return this;
+    }
+
+    @Override
+    public FloatingView customView(@LayoutRes int resource) {
+        mLayoutId = resource;
         return this;
     }
 
@@ -145,7 +162,7 @@ public class FloatingView implements IFloatingView {
         return this;
     }
 
-    private void addViewToWindow(final EnFloatingView view) {
+    private void addViewToWindow(final View view) {
         if (mContainer == null) {
             return;
         }
