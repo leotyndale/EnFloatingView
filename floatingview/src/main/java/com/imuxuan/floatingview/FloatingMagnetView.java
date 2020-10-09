@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.imuxuan.floatingview.utils.SystemUtils;
@@ -33,6 +34,7 @@ public class FloatingMagnetView extends FrameLayout {
     private int mScreenHeight;
     private int mStatusBarHeight;
     private boolean isNearestLeft = true;
+    private float mPortraitY;
 
     public void setMagnetViewListener(MagnetViewListener magnetViewListener) {
         this.mMagnetViewListener = magnetViewListener;
@@ -55,7 +57,7 @@ public class FloatingMagnetView extends FrameLayout {
         mMoveAnimator = new MoveAnimator();
         mStatusBarHeight = SystemUtils.getStatusBarHeight(getContext());
         setClickable(true);
-        updateSize();
+//        updateSize();
     }
 
     @Override
@@ -73,6 +75,7 @@ public class FloatingMagnetView extends FrameLayout {
                 updateViewPosition(event);
                 break;
             case MotionEvent.ACTION_UP:
+                clearPortraitY();
                 moveToEdge();
                 if (isOnClickEvent()) {
                     dealClickEvent();
@@ -114,17 +117,31 @@ public class FloatingMagnetView extends FrameLayout {
     }
 
     protected void updateSize() {
-        mScreenWidth = (SystemUtils.getScreenWidth(getContext()) - this.getWidth());
-        mScreenHeight = SystemUtils.getScreenHeight(getContext());
+        ViewGroup viewGroup = (ViewGroup) getParent();
+        if (viewGroup != null) {
+            mScreenWidth = viewGroup.getWidth() - getWidth();
+            mScreenHeight = viewGroup.getHeight();
+        }
+//        mScreenWidth = (SystemUtils.getScreenWidth(getContext()) - this.getWidth());
+//        mScreenHeight = SystemUtils.getScreenHeight(getContext());
     }
 
     public void moveToEdge() {
-        moveToEdge(isNearestLeft());
+        moveToEdge(isNearestLeft(), false);
     }
 
-    public void moveToEdge(boolean isLeft) {
+    public void moveToEdge(boolean isLeft, boolean isLandscape) {
         float moveDistance = isLeft ? MARGIN_EDGE : mScreenWidth - MARGIN_EDGE;
-        mMoveAnimator.start(moveDistance, getY());
+        float y = getY();
+        if (!isLandscape && mPortraitY != 0) {
+            y = mPortraitY;
+            clearPortraitY();
+        }
+        mMoveAnimator.start(moveDistance, Math.min(Math.max(0, y), mScreenHeight - getHeight()));
+    }
+
+    private void clearPortraitY() {
+        mPortraitY = 0;
     }
 
     protected boolean isNearestLeft() {
@@ -180,7 +197,22 @@ public class FloatingMagnetView extends FrameLayout {
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        updateSize();
-        moveToEdge(isNearestLeft);
+        if (getParent() != null) {
+            final boolean isLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE;
+            markPortraitY(isLandscape);
+            ((ViewGroup) getParent()).post(new Runnable() {
+                @Override
+                public void run() {
+                    updateSize();
+                    moveToEdge(isNearestLeft, isLandscape);
+                }
+            });
+        }
+    }
+
+    private void markPortraitY(boolean isLandscape) {
+        if (isLandscape) {
+            mPortraitY = getY();
+        }
     }
 }
