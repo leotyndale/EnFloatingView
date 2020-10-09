@@ -101,8 +101,8 @@ public class FloatingView implements IFloatingView {
         if (mEnFloatingView.getParent() == container) {
             return this;
         }
-        if (getContainer() != null && mEnFloatingView.getParent() == getContainer()) {
-            getContainer().removeView(mEnFloatingView);
+        if (mEnFloatingView.getParent() != null) {
+            ((ViewGroup) mEnFloatingView.getParent()).removeView(mEnFloatingView);
         }
         mContainer = new WeakReference<>(container);
         container.addView(mEnFloatingView);
