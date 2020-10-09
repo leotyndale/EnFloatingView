@@ -61,7 +61,7 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 1.在gralde的dependencies中加入
    ```java
-       compile 'com.imuxuan:floatingview:1.5'
+       compile 'com.imuxuan:floatingview:1.6'
    ```
    
    
@@ -143,14 +143,30 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 ### 更新记录
 
-1.3
+1.6
 
-增加自定义layout等API
+修复横竖屏切换错位 & 添加到布局时偶发崩溃
+
+1.5
+
+修复内存泄露问题
 
 1.4
 
 适配折叠屏
 
-1.5
+1.3
 
-修复内存泄露问题
+增加自定义layout等API
+
+1.2
+
+修复拖拽失效
+
+1.1
+
+点击监听问题处理
+
+1.0
+
+创建项目
