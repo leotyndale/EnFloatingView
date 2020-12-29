@@ -10,6 +10,8 @@ EnFloatingView
 
 [点击购买](https://item.jd.com/12730926.html)
 
+[豆瓣酱](https://book.douban.com/subject/34872142/)
+
 ==========================
  
 [English](/README_EN.md)
