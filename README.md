@@ -6,11 +6,9 @@ EnFloatingView
 [![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
 [![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
 
-![《移动开发架构设计实战》](https://upload-images.jianshu.io/upload_images/14802001-4864444c478c88ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+[![《移动开发架构设计实战》](https://upload-images.jianshu.io/upload_images/14802001-4864444c478c88ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://item.jd.com/12730926.html)
 
-[点击购买](https://item.jd.com/12730926.html)
-
-[豆瓣酱](https://book.douban.com/subject/34872142/)
+[🔥🔥🔥 马上重构你的架构思维](https://item.jd.com/12730926.html)
 
 ==========================
  
