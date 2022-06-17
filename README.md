@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)
+[![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)](http://www.imuxuan.com/)
 
 EnFloatingView
 ==========================
