@@ -1,11 +1,13 @@
-![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)
+[![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)](https://imuxuan.com/)
 
 EnFloatingView
 ==========================
-[![Jcenter](https://img.shields.io/badge/Jcenter-v1.0-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
-[![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](https://imuxuan.com/)
-[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](https://blog.imuxuan.com/)
+[![Stars](https://img.shields.io/github/stars/leotyndale/EnFloatingView?style=flat-square&color=f59e0b)](https://github.com/leotyndale/EnFloatingView/stargazers)
+[![Version](https://img.shields.io/badge/Version-v1.6-22c55e?style=flat-square)](https://github.com/leotyndale/EnFloatingView)
+[![Website](https://img.shields.io/badge/Website-imuxuan.com-10b981?style=flat-square)](https://imuxuan.com/)
+[![Blog](https://img.shields.io/badge/Blog-ForDeer-0ea5e9?style=flat-square)](https://blog.imuxuan.com/)
 
+[中文文档](/README.md)
 
 Do not need all permissions, not subject to a variety of domestic ROM restrictions, the default can be displayed within the application suspension window.
 
