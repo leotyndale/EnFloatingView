@@ -1,10 +1,10 @@
-[![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)](http://www.imuxuan.com/)
+[![Logo](https://raw.githubusercontent.com/leotyndale/EnFloatingView/master/preview/logo.png)](https://imuxuan.com/)
 
 EnFloatingView
 ==========================
 [![Jcenter](https://img.shields.io/badge/Jcenter-v1.5-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
-[![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](http://www.imuxuan.com/)
-[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](http://blog.imuxuan.com)
+[![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](https://imuxuan.com/)
+[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](https://blog.imuxuan.com/)
 
 [![《移动开发架构设计实战》](https://upload-images.jianshu.io/upload_images/14802001-4864444c478c88ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://item.jd.com/12730926.html)
 
@@ -15,6 +15,8 @@ EnFloatingView
 [English](/README_EN.md)
 
 无需一切权限，不受各种国产ROM限制，默认可以显示的应用内悬浮窗。
+
+实现原理与博客说明：[EnFloatingView 原理剖析](https://blog.imuxuan.com/archives/92) · [ForDeer 博客](https://blog.imuxuan.com/) · [沐暄公益网](https://imuxuan.com/)
 
 ### 传统方案
 
