@@ -2,16 +2,26 @@
 
 EnFloatingView
 ==========================
-[![Jcenter](https://img.shields.io/badge/Jcenter-v1.5-brightgreen.svg?style=flat)](https://bintray.com/leotyndale/Muxuan/EnFloatingView)
-[![Muxuan](https://img.shields.io/badge/PoweredBy-Muxuan-green.svg?style=flat)](https://imuxuan.com/)
-[![Website](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=Blog)](https://blog.imuxuan.com/)
+[![Stars](https://img.shields.io/github/stars/leotyndale/EnFloatingView?style=flat-square&color=f59e0b)](https://github.com/leotyndale/EnFloatingView/stargazers)
+[![Version](https://img.shields.io/badge/Version-v1.6-22c55e?style=flat-square)](https://github.com/leotyndale/EnFloatingView)
+[![Website](https://img.shields.io/badge/Website-imuxuan.com-10b981?style=flat-square)](https://imuxuan.com/)
+[![Blog](https://img.shields.io/badge/Blog-ForDeer-0ea5e9?style=flat-square)](https://blog.imuxuan.com/)
 
-[![《移动开发架构设计实战》](https://upload-images.jianshu.io/upload_images/14802001-4864444c478c88ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://item.jd.com/12730926.html)
+<table>
+  <tr>
+    <td>
+      <a href="https://item.jd.com/12730926.html">
+        <img src="https://blog.imuxuan.com/wp-content/uploads/2019/08/901574650976_.pic_.jpg" width="150" alt="《移动开发架构设计实战》" />
+      </a>
+    </td>
+    <td>
+      <b>📖《移动开发架构设计实战》</b> — 马上重构你的架构思维<br /><br />
+      传世经典作者 Andy Hunt 倾情力荐，50+ 实战案例剖析移动端架构设计。<br /><br />
+      🔗 <a href="https://item.jd.com/12730926.html">京东购买</a> · <a href="https://book.douban.com/subject/34872142/">豆瓣书评</a> · <a href="https://github.com/leotyndale/AppArchitecture">随书源码</a> · <a href="https://blog.imuxuan.com/archives/116">勘误与答疑</a>
+    </td>
+  </tr>
+</table>
 
-[🔥🔥🔥 马上重构你的架构思维](https://item.jd.com/12730926.html)
-
-==========================
- 
 [English](/README_EN.md)
 
 无需一切权限，不受各种国产ROM限制，默认可以显示的应用内悬浮窗。
