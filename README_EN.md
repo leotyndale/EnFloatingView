@@ -9,87 +9,117 @@ EnFloatingView
 
 [中文文档](/README.md)
 
-Do not need all permissions, not subject to a variety of domestic ROM restrictions, the default can be displayed within the application suspension window.
+**Permission-free in-app floating window for Android** — works out of the box across all OEM ROMs (MIUI/HyperOS, ColorOS, OriginOS, EMUI/HarmonyOS, OneUI) with zero `SYSTEM_ALERT_WINDOW` prompts.
 
-### Traditional way
+Architecture Deep Dive: [EnFloatingView Internals](https://blog.imuxuan.com/archives/92) · [ForDeer Blog](https://blog.imuxuan.com/) · [imuxuan.com](https://imuxuan.com/)
 
-For the implementation of traditional suspension Windows and some ancient "black technology" suspension Windows, there must have been many mature cases, and the implementation strategies are basically the following two：
+---
 
-1. TYPE_SYSTEM_ALERT Type
+### Why Not Traditional System Floating Windows?
 
-```java
-mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams()
-layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+Traditional Android floating windows rely on two system approaches, both with major UX friction:
+
+1. **`TYPE_SYSTEM_ALERT` / `TYPE_APPLICATION_OVERLAY`**:
+   ```java
+   mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+   WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+   layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+   ```
+   Requires declaring `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />` and sending users into system settings to grant overlay permission.
+
+2. **`TYPE_TOAST` / `TYPE_PHONE` Workarounds**:
+   Blocked on Android 7.1.1+ and hidden by default on Chinese OEM ROMs (Xiaomi, Huawei, Meizu, OPPO, vivo), forcing awkward permission-guide dialogs:
+
+![Permission Prompt](https://github.com/leotyndale/EnFloatingView/blob/master/preview/1.gif)
+
+---
+
+### Features
+
+- **Zero Permissions Required**: Displays directly inside your app window (`android.R.id.content`) without `SYSTEM_ALERT_WINDOW`.
+- **100% OEM ROM Compatible**: Shows by default on all Android devices without routing users to system settings.
+- **Smooth Drag & Edge Snapping**: Built-in touch dragging, screen-bounds clamping, and magnetic edge snapping.
+- **Jetpack Compose & Custom View Ready**: Host XML layouts, custom `View`s, or `ComposeView` effortlessly.
+
+---
+
+### Quick Start (View / XML)
+
+1. Add the dependency in `build.gradle`:
+   ```groovy
+   implementation 'com.imuxuan:floatingview:1.6'
+   ```
+
+2. Attach and detach in your base `Activity` `onStart` / `onStop` (or via `Application.ActivityLifecycleCallbacks`):
+   ```java
+   @Override
+   protected void onStart() {
+       super.onStart();
+       FloatingView.get().attach(this);
+   }
+
+   @Override
+   protected void onStop() {
+       super.onStop();
+       FloatingView.get().detach(this);
+   }
+   ```
+
+3. Show or remove the floating view:
+   ```java
+   FloatingView.get().add();
+   // Dismiss when no longer needed:
+   FloatingView.get().remove();
+   ```
+
+---
+
+### Jetpack Compose Interoperability (Kotlin)
+
+You can host any Jetpack Compose UI inside `EnFloatingView` while keeping magnetic edge-snapping and zero-permission display by subclassing `FloatingMagnetView`:
+
+```kotlin
+class ComposeFloatingView(context: Context) : FloatingMagnetView(context) {
+    init {
+        addView(
+            ComposeView(context).apply {
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+                setContent {
+                    MaterialTheme {
+                        Surface(shape = CircleShape, shadowElevation = 6.dp) {
+                            Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = "Floating Action",
+                                modifier = Modifier.padding(12.dp)
+                            )
+                        }
+                    }
+                }
+            }
+        )
+    }
+}
+
+// Attach inside your BaseActivity / ComponentActivity:
+FloatingView.get()
+    .customView(ComposeFloatingView(applicationContext))
+    .attach(this)
+    .add()
 ```
 
-need permission：
+---
 
-```java
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" ></uses>
-```
+### Preview
 
-2. TYPE_TOAST / TYPE_PHONE Type
+![Preview](https://github.com/leotyndale/EnFloatingView/blob/master/preview/2.gif)
 
-No permission statement is required below 7.1.1. It is hidden by default on models like meizu, huawei and xiaomi, and users need to be guided to open the suspension window.
+---
 
-### Traditional solutions
+### More Open-Source Projects
 
-The first scheme can not be adopted by many development because of various restrictions, so the more popular way to achieve the suspension window is the second one.
-
-But we have our own rules:
-
-- the above models cannot be accepted. The second way to achieve the suspension window still requires users to actively grant permission?
-- it is not acceptable to hide by default on models such as meizu, huawei and xiaomi. Users need to be guided to open the suspension window, like this
-
-![权限管理](https://github.com/leotyndale/EnFloatingView/blob/master/preview/1.gif)
-
-### function
-
-
-- the application is displayed without any permission
-- in-app display, all models can display the suspension window by default, without guiding users to do more Settings
-- support drag
-- move beyond screen limits
-- can be automatically attached to the edge of the screen
-
-### Instructions
-
-1.gralde dependencies
-
-   ```java
-       compile 'com.imuxuan:floatingview:1.0'
-   ```
-   
-
-2.Add the following code to onStart and onStop in the base class Activity (note that this must be the base class Activity)
-
-   ```java
-       @Override
-       protected void onStart() {
-           super.onStart();
-           FloatingView.get().attach(this);
-       }
-   
-       @Override
-       protected void onStop() {
-           super.onStop();
-           FloatingView.get().detach(this);
-       }
-   ```
-
-
-3.Display
-
-   ```java
-       FloatingView.get().add(getApplicationContext());
-   ```
-
-4.Dismiss
-
-   ```java
-       FloatingView.get().remove();
-   ```
-
-### Rendering
-![预览图](https://github.com/leotyndale/EnFloatingView/blob/master/preview/2.gif)
+| Project | Description | Stars |
+| --- | --- | --- |
+| [**mobile-agent-skills**](https://github.com/leotyndale/mobile-agent-skills) | Production AI Coding Agent Skills for Claude Code, Cursor, Codex, Antigravity & Gemini CLI | ![Stars](https://img.shields.io/github/stars/leotyndale/mobile-agent-skills?style=flat-square&color=f59e0b) |
+| [**AppArchitecture**](https://github.com/leotyndale/AppArchitecture) | 2026 Mobile Architecture Engineering Playbook & companion code | ![Stars](https://img.shields.io/github/stars/leotyndale/AppArchitecture?style=flat-square&color=f59e0b) |
+| [**EnCrashWhiteList**](https://github.com/leotyndale/EnCrashWhiteList) | Android ROM crash allowlist & `Looper.loop` defensive governance | ![Stars](https://img.shields.io/github/stars/leotyndale/EnCrashWhiteList?style=flat-square&color=f59e0b) |
+| [**EnDebugBubble**](https://github.com/leotyndale/EnDebugBubble) | In-app floating debug panel with live memory & feature toggles | ![Stars](https://img.shields.io/github/stars/leotyndale/EnDebugBubble?style=flat-square&color=f59e0b) |

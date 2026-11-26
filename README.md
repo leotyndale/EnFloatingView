@@ -150,6 +150,39 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
        FloatingView.get().layoutParams(new ViewGroup.LayoutParams());
    ```
 
+### Jetpack Compose 混编使用（Kotlin）
+
+无需重写悬浮窗手势与贴边逻辑，只需让自定义容器继承 `FloatingMagnetView` 并挂载 `ComposeView`，即可在任意 Activity 中直接渲染 Compose 悬浮组件（同样**无需任何悬浮窗权限**）：
+
+```kotlin
+class ComposeFloatingView(context: Context) : FloatingMagnetView(context) {
+    init {
+        addView(
+            ComposeView(context).apply {
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+                setContent {
+                    MaterialTheme {
+                        Surface(shape = CircleShape, shadowElevation = 6.dp) {
+                            Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = "Floating Action",
+                                modifier = Modifier.padding(12.dp)
+                            )
+                        }
+                    }
+                }
+            }
+        )
+    }
+}
+
+// 在 BaseActivity / ComponentActivity 的 onStart 中挂载：
+FloatingView.get()
+    .customView(ComposeFloatingView(applicationContext))
+    .attach(this)
+    .add()
+```
+
 ### 效果图
 ![预览图](https://github.com/leotyndale/EnFloatingView/blob/master/preview/2.gif)
 
@@ -182,3 +215,15 @@ layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 1.0
 
 创建项目
+
+---
+
+### 更多开源项目（More Open-Source Projects）
+
+| 项目 | 简介 | Stars |
+| --- | --- | --- |
+| [**mobile-agent-skills**](https://github.com/leotyndale/mobile-agent-skills) | 面向 Claude Code / Cursor / Codex / Antigravity / Gemini CLI 的移动端 AI 技能库 | ![Stars](https://img.shields.io/github/stars/leotyndale/mobile-agent-skills?style=flat-square&color=f59e0b) |
+| [**AppArchitecture**](https://github.com/leotyndale/AppArchitecture) | 2026 移动端架构工程实践指南与《移动开发架构设计实战》随书源码 | ![Stars](https://img.shields.io/github/stars/leotyndale/AppArchitecture?style=flat-square&color=f59e0b) |
+| [**EnCrashWhiteList**](https://github.com/leotyndale/EnCrashWhiteList) | 根治 ROM 崩溃问题，Android Crash 白名单异常处理方案 | ![Stars](https://img.shields.io/github/stars/leotyndale/EnCrashWhiteList?style=flat-square&color=f59e0b) |
+| [**EnDebugBubble**](https://github.com/leotyndale/EnDebugBubble) | 应用内悬浮调试气泡入口，实时内存监控与开关配置 | ![Stars](https://img.shields.io/github/stars/leotyndale/EnDebugBubble?style=flat-square&color=f59e0b) |
+
